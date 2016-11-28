@@ -41,6 +41,10 @@ func main() {
 			FirstName: "Shane",
 			LastName:  "Calhoun",
 		},
+		User{
+			FirstName: "Alice",
+			LastName:  "Calhoun",
+		},
 	}
 
 	fmt.Println("Unsorted:", users)
