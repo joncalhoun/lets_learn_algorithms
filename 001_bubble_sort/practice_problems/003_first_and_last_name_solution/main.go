@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 type User struct {
 	FirstName string
@@ -48,14 +51,41 @@ func main() {
 	}
 
 	fmt.Println("Unsorted:", users)
-	bubbleSort(users)
+
+	for i := 0; i < len(users); i++ {
+		bubbleSort(users[:len(users)-i])
+	}
+
 	fmt.Println("Sorted:  ", users)
+
 }
 
 func bubbleSort(users []User) {
-	// Implement this and any other functions you may need
-	// If you are writing Go code, you can access the first
-	// and last name like so:
 	fmt.Println(users[0].FirstName)
 	fmt.Println(users[0].LastName)
+
+	var lngth int = len(users)
+	var indx1 int = 0
+	var indx2 int = 1
+
+	for indx2 < lngth {
+		var val1 User = users[indx1]
+		var val2 User = users[indx2]
+
+		if asc(users[indx1], users[indx2]) {
+			users[indx1] = val2
+			users[indx2] = val1
+		}
+
+		indx1++
+		indx2++
+	}
+
+}
+
+func asc(first User, second User) bool {
+	if strings.ToLower(first.LastName + first.FirstName) < strings.ToLower(second.LastName + second.FirstName) {
+		return true
+	}
+	return false
 }
